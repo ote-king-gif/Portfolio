@@ -1,0 +1,305 @@
+
+   <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Flow — Task Manager</title>
+
+  <link rel="stylesheet" href="taskmanager.css">
+</head>
+
+<body>
+
+  <div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <div class="brand">
+        <div class="brand-icon">F</div>
+        <span>flow.</span>
+      </div>
+
+      <nav>
+        <button class="nav-item active" data-filter="all">
+          <span>⌂</span>
+          All Tasks
+          <strong id="allCount">0</strong>
+        </button>
+
+        <button class="nav-item" data-filter="today">
+          <span>◷</span>
+          Today
+          <strong id="todayCount">0</strong>
+        </button>
+
+        <button class="nav-item" data-filter="important">
+          <span>☆</span>
+          Important
+          <strong id="importantCount">0</strong>
+        </button>
+
+        <button class="nav-item" data-filter="completed">
+          <span>✓</span>
+          Completed
+          <strong id="completedCount">0</strong>
+        </button>
+      </nav>
+
+      <div class="sidebar-bottom">
+
+        <div class="progress-box">
+          <span>PRODUCTIVITY</span>
+
+          <div class="progress-circle">
+            <strong id="progressPercent">0%</strong>
+          </div>
+
+          <p>Keep the momentum going.</p>
+        </div>
+
+      </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="main">
+
+      <header class="topbar">
+
+        <div>
+          <p class="greeting">GOOD DAY 👋</p>
+          <h1>Let's get things done.</h1>
+        </div>
+
+        <button id="themeBtn" class="icon-btn">
+          ◐
+        </button>
+
+      </header>
+
+
+      <!-- SEARCH -->
+      <section class="toolbar">
+
+        <div class="search">
+          <span>⌕</span>
+
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Search your tasks..."
+          >
+        </div>
+
+        <button id="addTaskBtn" class="add-btn">
+          + New task
+        </button>
+
+      </section>
+
+
+      <!-- STATS -->
+      <section class="stats">
+
+        <div class="stat-card">
+          <span class="stat-icon blue">○</span>
+
+          <div>
+            <small>ALL TASKS</small>
+            <strong id="statTotal">0</strong>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <span class="stat-icon orange">!</span>
+
+          <div>
+            <small>IMPORTANT</small>
+            <strong id="statImportant">0</strong>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <span class="stat-icon green">✓</span>
+
+          <div>
+            <small>COMPLETED</small>
+            <strong id="statCompleted">0</strong>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <span class="stat-icon purple">◷</span>
+
+          <div>
+            <small>REMAINING</small>
+            <strong id="statRemaining">0</strong>
+          </div>
+        </div>
+
+      </section>
+
+
+      <!-- TASK AREA -->
+      <section class="tasks-section">
+
+        <div class="section-heading">
+
+          <div>
+            <span class="eyebrow">YOUR WORKSPACE</span>
+            <h2 id="sectionTitle">All Tasks</h2>
+          </div>
+
+          <select id="sortSelect">
+            <option value="created">Recently added</option>
+            <option value="priority">Priority</option>
+            <option value="due">Due date</option>
+          </select>
+
+        </div>
+
+
+        <div id="taskList" class="task-list"></div>
+
+        <div id="emptyState" class="empty-state">
+
+          <div class="empty-icon">✓</div>
+
+          <h3>Nothing here yet</h3>
+
+          <p>
+            Add a task and start making progress.
+          </p>
+
+          <button id="emptyAddBtn">
+            Create your first task
+          </button>
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+
+  <!-- MODAL -->
+
+  <div id="modal" class="modal">
+
+    <div class="modal-content">
+
+      <button id="closeModal" class="close-btn">×</button>
+
+      <span class="eyebrow">NEW TASK</span>
+
+      <h2>Create a task</h2>
+
+      <form id="taskForm">
+
+        <label>
+          Task name
+
+          <input
+            type="text"
+            id="taskTitle"
+            placeholder="What needs to be done?"
+            required
+          >
+        </label>
+
+
+        <label>
+          Description
+
+          <textarea
+            id="taskDescription"
+            placeholder="Add some details..."
+          ></textarea>
+
+        </label>
+
+
+        <div class="form-row">
+
+          <label>
+            Priority
+
+            <select id="taskPriority">
+
+              <option value="low">
+                Low
+              </option>
+
+              <option value="medium" selected>
+                Medium
+              </option>
+
+              <option value="high">
+                High
+              </option>
+
+            </select>
+
+          </label>
+
+
+          <label>
+            Due date
+
+            <input
+              type="date"
+              id="taskDate"
+            >
+
+          </label>
+
+        </div>
+
+
+        <label>
+          Category
+
+          <select id="taskCategory">
+
+            <option value="Personal">
+              Personal
+            </option>
+
+            <option value="Work">
+              Work
+            </option>
+
+            <option value="Study">
+              Study
+            </option>
+
+            <option value="Project">
+              Project
+            </option>
+
+          </select>
+
+        </label>
+
+
+        <button class="submit-btn" type="submit">
+          Create task
+        </button>
+
+      </form>
+
+    </div>
+
+  </div>
+
+
+  <script src="taskmanager.js"></script>
+
+</body>
+</html>
